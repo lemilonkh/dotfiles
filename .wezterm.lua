@@ -10,7 +10,10 @@ if wezterm.config_builder then
   config = wezterm.config_builder()
 end
 
-config.color_scheme = 'AdventureTime'
+config.default_prog = { '/usr/bin/tmux' }
+
+-- config.color_scheme = 'AdventureTime'
+config.color_scheme = 'Gruvbox Dark (Gogh)'
 config.window_frame = {
   font = wezterm.font { family = 'Roboto', weight = 'Bold' },
   font_size = 12.0,
@@ -22,6 +25,7 @@ config.colors = {
     inactive_tab_edge = '#575757',
   }
 }
+config.hide_tab_bar_if_only_one_tab = true
 config.window_background_opacity = 0.8
 config.font = wezterm.font 'JetBrains Mono'
 
