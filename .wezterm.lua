@@ -15,7 +15,7 @@ config.default_prog = { '/usr/bin/tmux' }
 -- config.color_scheme = 'AdventureTime'
 config.color_scheme = 'Gruvbox Dark (Gogh)'
 config.window_frame = {
-  font = wezterm.font { family = 'Roboto', weight = 'Bold' },
+  font = wezterm.font { family = 'JetBrains Mono', weight = 'Bold' },
   font_size = 12.0,
   active_titlebar_bg = '#005566',
   inactive_titlebar_bg = '#334466',
@@ -26,7 +26,7 @@ config.colors = {
   }
 }
 config.hide_tab_bar_if_only_one_tab = true
-config.window_background_opacity = 0.8
+config.window_background_opacity = 0.9
 config.font = wezterm.font 'JetBrains Mono'
 
 -- and finally, return the configuration to wezterm
