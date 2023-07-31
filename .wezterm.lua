@@ -1,0 +1,1 @@
+/home/milan/.wezterm.lua
