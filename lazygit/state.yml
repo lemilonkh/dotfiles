@@ -1,0 +1,15 @@
+lastupdatecheck: 0
+recentrepos:
+    - /home/milan/Code/lemilonkh.github.io
+    - /home/milan/Gamedev/sunken-shadows
+    - /home/milan/OpenEarth/CityCatalyst
+    - /home/milan/Gamedev/gmtkjam23
+    - /home/milan/OpenEarth/OpenClimate
+    - /home/milan/Code/CropTraceService
+    - /home/milan/OpenEarth/target-gap
+startuppopupversion: 5
+customcommandshistory:
+    - 'fix: error when creating baked colliders'
+    - git config --global merge.rebase false
+    - git config --global pull.rebase false
+hidecommandlog: false
