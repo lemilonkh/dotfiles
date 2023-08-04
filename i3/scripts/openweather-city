@@ -7,7 +7,8 @@ Aborting."; exit 1; }
 
 # To use this script you need to create an API key here https://home.openweathermap.org
 # You need to put your Open Weather APIKEY here:
-APIKEY="5fd624579036d27148472970d17a5803"
+source ~/.config/openweathermap-keys.conf
+APIKEY=$OWM_APIKEY
 # find your City ID here: https://openweathermap.org/
 # search for youididr city and copy the ID from the URL inside the browser.
 CITY_ID="2950159"
