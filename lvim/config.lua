@@ -88,9 +88,28 @@ require("catppuccin").setup({
 lvim.colorscheme = "gruvbox"
 lvim.transparent_window = true
 
--- DAP configuration
-require "lspconfig".gdscript.setup {}
+-- LSP
+local function organize_imports()
+  local params = {
+    command = "_typescript.organizeImports",
+    arguments = {vim.api.nvim_buf_get_name(0)},
+    title = ""
+  }
+  vim.lsp.buf.execute_command(params)
+end
 
+local lspconfig = require "lspconfig"
+lspconfig.tsserver.setup {
+  commands = {
+    OrganizeImports = {
+      organize_imports,
+      description = "Organize Imports"
+    }
+  }
+}
+
+-- DAP configuration
+lspconfig.gdscript.setup {}
 local dap = require("dap")
 dap.adapters.godot = {
   type = "server",
@@ -155,3 +174,17 @@ vim.api.nvim_create_autocmd({ "CursorHold" }, {
   command = "lua OpenDiagnosticIfNoFloat()",
   group = "lsp_diagnostics_hold",
 })
+
+-- custom lvim commands in dashboard
+local dashboard = require "alpha.themes.dashboard"
+local function makeButton(...)
+  local t = {...}
+  table.insert(lvim.builtin.alpha.dashboard.section.buttons.entries, dashboard.button(unpack(t)))
+end
+
+-- makeButton("s", "  Open Last Session", "<cmd>lua require('persistence').load()<cr>")
+-- makeButton("q", "  Quit NVIM", ":qa<CR>")
+
+-- add extra bindings with leader-key prefix using which-key
+lvim.builtin.which_key.mappings["l"]["o"] = { ":OrganizeImports<cr>", "Organize Imports" }
+
