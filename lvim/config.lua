@@ -81,6 +81,7 @@ lvim.plugins = {
 }
 
 require 'colorizer'.setup()
+
 -- Color scheme
 -- require("catppuccin").setup({
 --   flavor = "macchiato",
@@ -92,6 +93,23 @@ require 'colorizer'.setup()
 -- vim.cmd.colorscheme "catppuccin"
 lvim.colorscheme = "gruvbox"
 lvim.transparent_window = true
+
+-- lualine
+local function searchCount()
+  local search = vim.fn.searchcount({ maxcount = 0 }) -- maxcount = 0 disables cap at 99
+  if search.current > 0 then
+    return "/" .. vim.fn.getreg("/") .. " [" .. search.current .. "/" .. search.total .. "]"
+  else
+    return ""
+  end
+end
+
+lvim.builtin.lualine.options.theme = "material"
+lvim.builtin.lualine.sections = {
+  lualine_x = { { searchCount }, 'tabs', 'fileformat', 'filetype' },
+}
+lvim.builtin.lualine.options.section_separators = { left = "", right = "" }
+lvim.builtin.lualine.options.component_separators = { left = "", right = "" }
 
 -- LSP
 local function organize_imports()
