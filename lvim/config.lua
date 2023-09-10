@@ -97,7 +97,7 @@ lvim.transparent_window = true
 local function organize_imports()
   local params = {
     command = "_typescript.organizeImports",
-    arguments = {vim.api.nvim_buf_get_name(0)},
+    arguments = { vim.api.nvim_buf_get_name(0) },
     title = ""
   }
   vim.lsp.buf.execute_command(params)
@@ -136,6 +136,7 @@ formatters.setup {
 }
 
 require("lvim.lsp.manager").setup "tailwindcss"
+
 -- DAP configuration
 lspconfig.gdscript.setup {}
 local dap = require("dap")
@@ -206,7 +207,7 @@ vim.api.nvim_create_autocmd({ "CursorHold" }, {
 -- custom lvim commands in dashboard
 local dashboard = require "alpha.themes.dashboard"
 local function makeButton(...)
-  local t = {...}
+  local t = { ... }
   table.insert(lvim.builtin.alpha.dashboard.section.buttons.entries, dashboard.button(unpack(t)))
 end
 
@@ -215,4 +216,3 @@ end
 
 -- add extra bindings with leader-key prefix using which-key
 lvim.builtin.which_key.mappings["l"]["o"] = { ":OrganizeImports<cr>", "Organize Imports" }
-
