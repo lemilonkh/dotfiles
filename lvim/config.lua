@@ -21,9 +21,9 @@ vim.api.nvim_create_user_command("W", "w", { nargs = 0 })
 
 -- plugins
 lvim.plugins = {
-  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+  -- { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+  -- { "rose-pine/neovim", name = "rose-pine" },
   { "morhetz/gruvbox", name = "gruvbox" },
-  { "rose-pine/neovim", name = "rose-pine" },
   {
     "folke/flash.nvim",
     event = "VeryLazy",
@@ -80,13 +80,13 @@ lvim.plugins = {
 }
 
 -- Color scheme
-require("catppuccin").setup({
-  flavor = "macchiato",
-  dim_inactive = {
-    enabled = true,
-    percentage = 0.15,
-  },
-})
+-- require("catppuccin").setup({
+--   flavor = "macchiato",
+--   dim_inactive = {
+--     enabled = true,
+--     percentage = 0.15,
+--   },
+-- })
 -- vim.cmd.colorscheme "catppuccin"
 lvim.colorscheme = "gruvbox"
 lvim.transparent_window = true
