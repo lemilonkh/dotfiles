@@ -14,7 +14,8 @@ fi
 EDITOR="vim"
 
 export GEM_HOME="$HOME/gems"
-export PATH="$HOME/gems/bin:$PATH"
+export PLAYDATE_SDK_PATH="$HOME/Tools/PlaydateSDK-2.0.1"
+export PATH="$HOME/gems/bin:$PLAYDATE_SDK_PATH/bin:$PATH"
 
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
@@ -29,8 +30,8 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-alias c="xclip -selection clipboard"
-alias v="xclip -o"
+alias cc="xclip -selection clipboard"
+alias cv="xclip -o -selection clipboard"
 
 alias vim="lvim"
 
@@ -56,7 +57,7 @@ alias gds="git diff --staged"
 
 alias xsc="xclip -sel clip"
 
-alias v='fd --type f --hidden --exclude .git | fzf-tmux -p --reverse | xargs lvim'
+alias v='fd --type f --hidden --exclude .git | fzf-tmux -p --reverse | xargs --no-run-if-empty lvim'
 
 eval $(ssh-agent) > /dev/null
 
