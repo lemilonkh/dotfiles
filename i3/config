@@ -380,7 +380,8 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id xmousepasteblock
 
 # lock screen on suspend
-exec --no-startup-id xss-lock -- ~/.config/i3/scripts/blur-lock
+# exec --no-startup-id xss-lock -- ~/.config/i3/scripts/blur-lock
+exec --no-startup-id xautolock -detectsleep -time 3 -locker "xss-lock -- ~/.config/i3/scripts/blur-lock"
 
 # dex execute .desktop files + apps using /etc/xdg/autostart.
 # when second to i3 a DE is installed or mixed usage of i3 + xfce4 or GNOME
