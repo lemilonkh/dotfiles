@@ -113,6 +113,29 @@ lspconfig.tsserver.setup {
   }
 }
 
+-- TypeScript stuff
+-- local linters = require "lvim.lsp.null-ls.linters"
+-- linters.setup {
+--   { command = "eslint", filetypes = { "typescript", "typescriptreact" } }
+-- }
+lspconfig.eslint.setup {
+  settings = {
+    codeAction = {
+      disableRuleComment = { enable = true }
+    }
+  }
+}
+-- lspconfig.prettier.setup {}
+
+local formatters = require "lvim.lsp.null-ls.formatters"
+formatters.setup {
+  {
+    command = "prettier",
+    filetypes = { "typescript", "typescriptreact", "javascript" },
+  },
+}
+
+require("lvim.lsp.manager").setup "tailwindcss"
 -- DAP configuration
 lspconfig.gdscript.setup {}
 local dap = require("dap")
