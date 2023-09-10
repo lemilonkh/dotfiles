@@ -77,8 +77,10 @@ lvim.plugins = {
       },
     },
   },
+  { "norcalli/nvim-colorizer.lua" },
 }
 
+require 'colorizer'.setup()
 -- Color scheme
 -- require("catppuccin").setup({
 --   flavor = "macchiato",
