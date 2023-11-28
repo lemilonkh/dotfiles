@@ -22,62 +22,74 @@ vim.api.nvim_create_user_command("W", "w", { nargs = 0 })
 -- plugins
 lvim.plugins = {
   -- { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
-  -- { "rose-pine/neovim", name = "rose-pine" },
-  { "morhetz/gruvbox", name = "gruvbox" },
+  { "rose-pine/neovim", name = "rose-pine" },
+  { "morhetz/gruvbox",            name = "gruvbox" },
+  -- {
+  --   "folke/flash.nvim",
+  --   event = "VeryLazy",
+  --   opts = {},
+  --   keys = {
+  --     {
+  --       "s",
+  --       mode = { "n", "x", "o" },
+  --       function()
+  --         require("flash").jump({
+  --           search = {
+  --             mode = function(str)
+  --               return "\\<" .. str
+  --             end,
+  --           },
+  --         })
+  --       end,
+  --       desc = "Flash",
+  --     },
+  --     {
+  --       "S",
+  --       mode = { "n", "o", "x" },
+  --       function()
+  --         require("flash").treesitter()
+  --       end,
+  --       desc = "Flash Treesitter",
+  --     },
+  --     {
+  --       "r",
+  --       mode = "o",
+  --       function()
+  --         require("flash").remote()
+  --       end,
+  --       desc = "Remote Flash",
+  --     },
+  --     {
+  --       "R",
+  --       mode = { "o", "x" },
+  --       function()
+  --         require("flash").treesitter_search()
+  --       end,
+  --       desc = "Flash Treesitter Search",
+  --     },
+  --     {
+  --       "<c-s>",
+  --       mode = { "c" },
+  --       function()
+  --         require("flash").toggle()
+  --       end,
+  --       desc = "Toggle Flash Search",
+  --     },
+  --   },
+  -- },
+  { "norcalli/nvim-colorizer.lua" },
   {
-    "folke/flash.nvim",
+    "ray-x/lsp_signature.nvim",
     event = "VeryLazy",
-    opts = {},
-    keys = {
-      {
-        "s",
-        mode = { "n", "x", "o" },
-        function()
-          require("flash").jump({
-            search = {
-              mode = function(str)
-                return "\\<" .. str
-              end,
-            },
-          })
-        end,
-        desc = "Flash",
-      },
-      {
-        "S",
-        mode = { "n", "o", "x" },
-        function()
-          require("flash").treesitter()
-        end,
-        desc = "Flash Treesitter",
-      },
-      {
-        "r",
-        mode = "o",
-        function()
-          require("flash").remote()
-        end,
-        desc = "Remote Flash",
-      },
-      {
-        "R",
-        mode = { "o", "x" },
-        function()
-          require("flash").treesitter_search()
-        end,
-        desc = "Flash Treesitter Search",
-      },
-      {
-        "<c-s>",
-        mode = { "c" },
-        function()
-          require("flash").toggle()
-        end,
-        desc = "Toggle Flash Search",
+    opts = {
+      bind = true,
+      handler_opts = {
+        border = "rounded"
       },
     },
+    config = function(_, opts) require "lsp_signature".setup(opts) end
   },
-  { "norcalli/nvim-colorizer.lua" },
+  -- { "wuelnerdotexe/vim-astro" },
 }
 
 require 'colorizer'.setup()
@@ -91,23 +103,21 @@ require 'colorizer'.setup()
 --   },
 -- })
 -- vim.cmd.colorscheme "catppuccin"
-lvim.colorscheme = "gruvbox"
+lvim.colorscheme = "rose-pine"
 lvim.transparent_window = true
 
 -- lualine
-local function searchCount()
-  local search = vim.fn.searchcount({ maxcount = 0 }) -- maxcount = 0 disables cap at 99
-  if search.current > 0 then
-    return "/" .. vim.fn.getreg("/") .. " [" .. search.current .. "/" .. search.total .. "]"
-  else
-    return ""
-  end
-end
+-- local function searchCount()
+--   local search = vim.fn.searchcount({ maxcount = 0 }) -- maxcount = 0 disables cap at 99
+--   if search.current > 0 then
+--     return "/" .. vim.fn.getreg("/") .. " [" .. search.current .. "/" .. search.total .. "]"
+--   else
+--     return ""
+--   end
+-- end
 
-lvim.builtin.lualine.options.theme = "material"
-lvim.builtin.lualine.sections = {
-  lualine_x = { { searchCount }, 'tabs', 'fileformat', 'filetype' },
-}
+-- lvim.builtin.lualine.options.theme = "material"
+-- table.insert(lvim.builtin.lualine.sections.lualine_x, { searchCount })
 lvim.builtin.lualine.options.section_separators = { left = "", right = "" }
 lvim.builtin.lualine.options.component_separators = { left = "", right = "" }
 
@@ -149,11 +159,20 @@ local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
   {
     command = "prettier",
-    filetypes = { "typescript", "typescriptreact", "javascript" },
+    filetypes = { "typescript", "typescriptreact", "javascript", "astro" },
   },
 }
 
 require("lvim.lsp.manager").setup "tailwindcss"
+
+lspconfig.astro.setup {
+  init_options = {
+    typescript = {
+      tsdk = vim.fs.normalize '~/.local/share/pnpm/global/5/node_modules/typescript/lib',
+    },
+  },
+}
+-- vim.g.astro_typescript = 'enable'
 
 -- DAP configuration
 lspconfig.gdscript.setup {}
@@ -234,3 +253,7 @@ end
 
 -- add extra bindings with leader-key prefix using which-key
 lvim.builtin.which_key.mappings["l"]["o"] = { ":OrganizeImports<cr>", "Organize Imports" }
+lvim.builtin.which_key.mappings["b"]["p"] = { ":bp", "Previous" }
+
+-- access docs of current token via gk
+lvim.lsp.buffer_mappings.normal_mode['gk'] = lvim.lsp.buffer_mappings.normal_mode['K']
