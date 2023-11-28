@@ -14,7 +14,7 @@ fi
 EDITOR="vim"
 
 export GEM_HOME="$HOME/gems"
-export PLAYDATE_SDK_PATH="$HOME/Tools/PlaydateSDK-2.0.1"
+export PLAYDATE_SDK_PATH="$HOME/Tools/PlaydateSDK-2.0.3"
 export PATH="$HOME/gems/bin:$PLAYDATE_SDK_PATH/bin:$PATH"
 
 # Lines configured by zsh-newuser-install
@@ -63,3 +63,11 @@ eval $(ssh-agent) > /dev/null
 
 eval "$(zoxide init zsh)"
 
+
+# pnpm
+export PNPM_HOME="/home/milan/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
