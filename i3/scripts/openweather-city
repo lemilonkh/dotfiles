@@ -11,7 +11,7 @@ source ~/.config/openweathermap-keys.conf
 APIKEY=$OWM_APIKEY
 # find your City ID here: https://openweathermap.org/
 # search for youididr city and copy the ID from the URL inside the browser.
-CITY_ID="2950159"
+CITY_ID="2852458"
 URL="http://api.openweathermap.org/data/2.5/weather?id=${CITY_ID}&units=metric&APPID=${APIKEY}"
 
 WEATHER_RESPONSE=$(wget -qO- "${URL}")
