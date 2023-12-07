@@ -37,6 +37,25 @@ lvim.plugins = {
     },
     config = function(_, opts) require "lsp_signature".setup(opts) end
   },
+  { "nvim-lua/plenary.nvim" },
+  {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    -- requires = {{ "nvim-lua/plenary.nvim" }}
+    config = function()
+      local harpoon = require("harpoon");
+      harpoon:setup()
+
+      -- lvim.builtin.which_key.mappings["a"] = { function() harpoon:list():append() end, "Add to Harpoon" }
+      -- lvim.builtin.which_key.mappings["t"] = { function()  end, "Add to Harpoon" }
+      vim.keymap.set("n", "<C-a>", function() harpoon:list():append() end)
+      vim.keymap.set("n", "<C-t>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+      vim.keymap.set("n", "<C-x>", function() harpoon:list():select(1) end)
+      vim.keymap.set("n", "<C-c>", function() harpoon:list():select(2) end)
+      vim.keymap.set("n", "<C-v>", function() harpoon:list():select(3) end)
+      vim.keymap.set("n", "<C-b>", function() harpoon:list():select(4) end)
+    end,
+  },
   -- rust
   {
     "simrat39/rust-tools.nvim",
@@ -261,11 +280,11 @@ vim.api.nvim_create_autocmd({ "CursorHold" }, {
 })
 
 -- custom lvim commands in dashboard
-local dashboard = require "alpha.themes.dashboard"
-local function makeButton(...)
-  local t = { ... }
-  table.insert(lvim.builtin.alpha.dashboard.section.buttons.entries, dashboard.button(unpack(t)))
-end
+-- local dashboard = require "alpha.themes.dashboard"
+-- local function makeButton(...)
+--   local t = { ... }
+--   table.insert(lvim.builtin.alpha.dashboard.section.buttons.entries, dashboard.button(unpack(t)))
+-- end
 
 -- makeButton("s", "  Open Last Session", "<cmd>lua require('persistence').load()<cr>")
 -- makeButton("q", "  Quit NVIM", ":qa<CR>")
