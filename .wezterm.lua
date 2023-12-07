@@ -28,7 +28,8 @@ config.colors = {
 config.hide_tab_bar_if_only_one_tab = true
 config.window_background_opacity = 0.995
 config.font = wezterm.font 'JetBrains Mono'
-
+config.warn_about_missing_glyphs = false
+ 
 -- and finally, return the configuration to wezterm
 return config
 
