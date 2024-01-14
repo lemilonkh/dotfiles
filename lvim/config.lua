@@ -56,6 +56,23 @@ lvim.plugins = {
       vim.keymap.set("n", "<C-b>", function() harpoon:list():select(4) end)
     end,
   },
+  -- godot
+  {
+    "habamax/vim-godot",
+    event = "BufEnter *.gd",
+    config = function()
+      local null_ls = require("null-ls")
+      null_ls.register({
+        null_ls.builtins.formatting.gdformat,
+      })
+      vim.cmd([[
+        setlocal foldmethod=expr
+        setlocal tabstop=4
+        setlocal shiftwidth=4
+        setlocal indentexpr=
+      ]])
+    end,
+  },
   -- rust
   {
     "simrat39/rust-tools.nvim",
