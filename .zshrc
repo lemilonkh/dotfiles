@@ -63,13 +63,14 @@ alias gd="git diff"
 alias gds="git diff --staged"
 
 alias xsc="xclip -sel clip"
-
 alias v='fd --type f --hidden --exclude .git | fzf-tmux -p --reverse | xargs --no-run-if-empty lvim'
+alias biggest="du -aBm . 2>/dev/null | sort -nr | head -n 10"
 
 eval $(ssh-agent) > /dev/null
 
 eval "$(zoxide init zsh)"
 
+alias conv-webm="for i in *.mkv; do ffmpeg -i "$i" -c:v libvpx-vp9 -crf 30 -b:v 0 -b:a 128k -c:a libopus \"${i%.*}.webm\"; done"
 
 # pnpm
 export PNPM_HOME="/home/milan/.local/share/pnpm"
