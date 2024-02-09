@@ -15,7 +15,7 @@ EDITOR="vim"
 
 export GEM_HOME="$HOME/gems"
 export PLAYDATE_SDK_PATH="$HOME/Tools/PlaydateSDK-2.0.3"
-export PATH="$HOME/gems/bin:$PLAYDATE_SDK_PATH/bin:$PATH"
+export PATH="$HOME/gems/bin:$PLAYDATE_SDK_PATH/bin:$HOME/.cargo/bin:$PATH"
 
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
