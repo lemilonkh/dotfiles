@@ -391,6 +391,15 @@ pcall(function()
             enable = true,
             command = "clippy",
           },
+          procMacro = {
+            ignored = {
+              leptos_macro = {
+                -- optional in case of issues
+                -- "component",
+                "server",
+              }
+            }
+          }
         },
       },
     },
