@@ -55,12 +55,14 @@ alias gpl="check_keys && git pull"
 alias gp="check_keys && git push"
 alias gco="git checkout"
 alias gcob="git checkout -b"
-alias gpu="check_keys && git push -u origin $(git rev-parse --abbrev-ref HEAD)"
 alias gs="git status"
 alias gl="git log"
 alias glp="git log -p"
 alias gd="git diff"
 alias gds="git diff --staged"
+function gpu() {
+  check_keys && git push -u origin $(git rev-parse --abbrev-ref HEAD)
+}
 
 alias lg="lazygit"
 
