@@ -144,6 +144,12 @@ lvim.plugins = {
       require("fidget").setup()
     end,
   },
+  {
+    "Exafunction/codeium.vim",
+    event = "BufEnter",
+    config = function()
+    end
+  }
 }
 
 require 'colorizer'.setup()
