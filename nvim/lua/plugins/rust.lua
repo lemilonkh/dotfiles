@@ -124,7 +124,7 @@ return {
       })
     end,
   },
-  {
+  --[[ {
     "simrat39/rust-tools.nvim",
     dependencies = {
       "neovim/nvim-lspconfig",
@@ -239,5 +239,5 @@ return {
         require("rust-tools").setup(opts)
       end,
     },
-  },
+  }, ]]
 }
