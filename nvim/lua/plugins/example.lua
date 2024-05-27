@@ -11,7 +11,18 @@ return {
   -- { "ellisonleao/gruvbox.nvim" },
   -- { "shaunsingh/nord.nvim" },
   { "rebelot/kanagawa.nvim" },
-  { "folke/tokyonight.nvim", lazy = true, opts = { style = "night" } },
+  {
+    "folke/tokyonight.nvim",
+    lazy = true,
+    opts = {
+      style = "night",
+      transparent = true,
+      styles = {
+        sidebars = "transparent",
+        floats = "transparent",
+      },
+    },
+  },
 
   -- Configure LazyVim to load gruvbox
   {
