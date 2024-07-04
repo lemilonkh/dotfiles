@@ -37,18 +37,11 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# Setup Zinit package manager
-ZINIT_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/zinit/zinit.git"
 alias cc="xclip -selection clipboard"
 alias cv="xclip -o -selection clipboard"
 
-if [ ! -d "$ZINIT_HOME" ]; then
-  mkdir -p "$(dirname $ZINIT_HOME)"
-  git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
-fi
 alias vim="nvim"
 
-source "${ZINIT_HOME}/zinit.zsh"
 check_keys() {
   if ssh-add -l | grep -q "no identities"; then
     ssh-add
