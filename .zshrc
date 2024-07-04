@@ -71,8 +71,6 @@ function gpu() {
   check_keys && git push -u origin $(git rev-parse --abbrev-ref HEAD)
 }
 
-# Set prompt theme
-zinit ice depth=1; zinit light romkatv/powerlevel10k
 alias lg="lazygit"
 
 alias xsc="xclip -sel clip"
