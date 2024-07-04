@@ -83,8 +83,13 @@ return {
     },
   },
 
-  -- add telescope-fzf-native
+  -- add telescope
+  -- { "junegunn/fzf", dir = "~/.fzf", build = "./install --all" },
   {
+    "nvim-telescope/telescope-fzf-native.nvim",
+    build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+  },
+  --[[{
     "telescope.nvim",
     dependencies = {
       "nvim-telescope/telescope-fzf-native.nvim",
@@ -93,7 +98,7 @@ return {
         require("telescope").load_extension("fzf")
       end,
     },
-  },
+  },]]
 
   -- the opts function can also be used to change the default opts:
   {
