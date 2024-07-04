@@ -7,9 +7,9 @@
 -- * disable/enabled LazyVim plugins
 -- * override the configuration of LazyVim plugins
 return {
-  -- add gruvbox
   -- { "ellisonleao/gruvbox.nvim" },
   -- { "shaunsingh/nord.nvim" },
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
   { "rebelot/kanagawa.nvim" },
   {
     "folke/tokyonight.nvim",
@@ -28,7 +28,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "tokyonight",
+      colorscheme = "catppuccin",
     },
   },
 
