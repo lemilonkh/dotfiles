@@ -13,7 +13,8 @@ end
 config.default_prog = { "/usr/bin/tmux" }
 
 -- config.color_scheme = 'AdventureTime'
-config.color_scheme = "Gruvbox Dark (Gogh)"
+-- config.color_scheme = "Gruvbox Dark (Gogh)"
+config.color_scheme = "Catppuccin Mocha"
 config.window_frame = {
 	font = wezterm.font({ family = "JetBrains Mono", weight = "Bold" }),
 	font_size = 12.0,
