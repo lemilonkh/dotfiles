@@ -176,6 +176,9 @@ bindsym $mod+Return exec wezterm
 # bindsym $mod+Return exec xfce4-terminal
 #bindsym $mod+Return exec alacritty
 
+# search for emojis
+bindsym $mod+period exec rofimoji
+
 # kill focused window
 bindsym $mod+q kill
 
