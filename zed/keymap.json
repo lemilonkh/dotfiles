@@ -1,0 +1,11 @@
+[
+  {
+    "context": "Editor && vim_mode == normal && vim_operator == none && !VimWaiting",
+    "bindings": {
+      // ...
+      "space g g": [
+        "workspace::SendKeystrokes",
+        "alt-shift-t enter"
+      ]
+    }
+  ]
