@@ -14,8 +14,13 @@ fi
 EDITOR="vim"
 
 export GEM_HOME="$HOME/gems"
-export PLAYDATE_SDK_PATH="$HOME/Tools/PlaydateSDK-2.0.3"
-export PATH="$HOME/gems/bin:$PLAYDATE_SDK_PATH/bin:$HOME/.cargo/bin:$HOME/.local/bin/:$PATH"
+export PLAYDATE_SDK_PATH="$HOME/Tools/PlaydateSDK-2.5.0"
+export PATH="$HOME/gems/bin:$PLAYDATE_SDK_PATH/bin:$HOME/.cargo/bin:$HOME/.local/bin/:$HOME/Tools/PlaydateSDK-2.5.0/bin:$PATH"
+
+# ZVM
+export ZVM_INSTALL="$HOME/.zvm/self"
+export PATH="$PATH:$HOME/.zvm/bin"
+export PATH="$PATH:$ZVM_INSTALL/"
 
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
