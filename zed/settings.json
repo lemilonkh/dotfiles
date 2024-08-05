@@ -7,15 +7,28 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "tab_bar": {
+    "show": true
+  },
   "telemetry": {
     "metrics": true
   },
+  "features": {
+    // Which inline completion provider to use.
+    "inline_completion_provider": "none"
+  },
   "vim_mode": true,
+  "base_keymap": "JetBrains",
   "format_on_save": "on",
   // Test
   "relative_line_numbers": true,
   "ui_font_size": 16,
   "buffer_font_size": 16,
+  "terminal": {
+    "line_height": "standard",
+    // "font_family": "Terminess Nerd Font",
+    "font_size": 16
+  },
   "theme": {
     "mode": "system",
     "light": "One Light",
