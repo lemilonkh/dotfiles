@@ -1,11 +1,26 @@
 [
   {
+    "context": "Workspace || Editor",
+    "bindings": {
+      "ctrl-/": "terminal_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-/": "workspace::ToggleBottomDock",
+      "ctrl-n": "workspace::NewTerminal"
+    }
+  },
+  {
     "context": "Editor && vim_mode == normal && vim_operator == none && !VimWaiting",
     "bindings": {
-      // ...
-      "space g g": [
-        "workspace::SendKeystrokes",
-        "alt-shift-t enter"
-      ]
+      "space c": ["workspace::SendKeystrokes", ":"],
+      "space g g": "task::Spawn",
+      // "space g g": ["workspace::SendKeystrokes", "alt-shift-t enter"],
+      "space /": ["workspace::SendKeystrokes", "ctrl-shift-f"],
+      "shift shift": "file_finder::Toggle",
+      "space space": "file_finder::Toggle"
     }
-  ]
+  }
+]
