@@ -15,7 +15,7 @@
   },
   "features": {
     // Which inline completion provider to use.
-    "inline_completion_provider": "none"
+    "inline_completion_provider": "copilot"
   },
   "vim_mode": true,
   "base_keymap": "JetBrains",
