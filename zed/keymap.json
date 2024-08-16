@@ -6,6 +6,13 @@
     }
   },
   {
+    "context": "Project",
+    "bindings": {
+      "ctrl-n": "project_panel::NewFile",
+      "a": "project_panel::NewFile"
+    }
+  },
+  {
     "context": "Terminal",
     "bindings": {
       "ctrl-/": "workspace::ToggleBottomDock",
@@ -19,8 +26,13 @@
       "space g g": "task::Spawn",
       // "space g g": ["workspace::SendKeystrokes", "alt-shift-t enter"],
       "space /": ["workspace::SendKeystrokes", "ctrl-shift-f"],
-      "shift shift": "file_finder::Toggle",
-      "space space": "file_finder::Toggle"
+      "space space": "file_finder::Toggle",
+      "space e": "project_panel::ToggleFocus",
+      "space g r": "editor::RevertSelectedHunks",
+      "space g h r": "editor::RevertSelectedHunks",
+      "g r": "editor::FindAllReferences",
+      "g f": "editor::OpenExcerpts",
+      "g e": "editor::OpenExcerpts"
     }
   }
 ]
