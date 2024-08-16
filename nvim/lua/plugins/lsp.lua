@@ -32,6 +32,7 @@ return {
         ---@type table<string, fun(server:string, opts:_.lspconfig.options):boolean?>
         setup = {
           godot = function(_, opts)
+            local lspconfig = require("lspconfig")
             lspconfig.gdscript.setup({})
             local dap = require("dap")
             dap.adapters.godot = {
@@ -48,6 +49,35 @@ return {
                 launch_scene = true,
               },
             }
+          end,
+          arduino_language_server = function(_, opts)
+            local lspconfig = require("lspconfig")
+            lspconfig.arduino_language_server.setup({
+              cmd = {
+                "arduino-language-server",
+                "-cli-config",
+                "/home/milan/.arduino15/arduino-cli.yaml",
+                "-cli",
+                "arduino-cli",
+                "-clangd",
+                "clangd",
+                "-fqbn",
+                "arduino:avr:uno",
+              },
+              --[[ root_dir = function(fname)
+                -- P(vim.fn.expand "%:p:h")
+                -- return vim.fn.expand "%:p:h"
+                local root_files = { vim.fn.expand("%") }
+                P(fname)
+                P(root_files)
+                local primary = lspconfig.util.root_pattern(unpack(root_files))(fname)
+                P(primary)
+                return primary
+              end, ]]
+              filetypes = { "arduino", "ino", "cpp", "c", "h" }, -- Add or adjust filetypes if needed
+              root_dir = lspconfig.util.root_pattern("*.ino", "*.cpp"), -- You might need to tweak this
+              -- root_dir = lspconfig.util.find_git_ancestor,
+            })
           end,
         },
       },
@@ -81,6 +111,7 @@ return {
           "rust",
           "gdscript",
           "rust",
+          "arduino_language_server",
         },
       },
     },
