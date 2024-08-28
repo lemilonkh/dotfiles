@@ -52,7 +52,9 @@ return {
           end,
           arduino_language_server = function(_, opts)
             local lspconfig = require("lspconfig")
-            lspconfig.arduino_language_server.setup({
+            lspconfig.arduino_language_server.setup({})
+
+            --[[ ({
               cmd = {
                 "arduino-language-server",
                 "-cli-config",
@@ -64,7 +66,7 @@ return {
                 "-fqbn",
                 "arduino:avr:uno",
               },
-              --[[ root_dir = function(fname)
+          --[[ root_dir = function(fname)
                 -- P(vim.fn.expand "%:p:h")
                 -- return vim.fn.expand "%:p:h"
                 local root_files = { vim.fn.expand("%") }
@@ -73,11 +75,11 @@ return {
                 local primary = lspconfig.util.root_pattern(unpack(root_files))(fname)
                 P(primary)
                 return primary
-              end, ]]
+              end, 
               filetypes = { "arduino", "ino", "cpp", "c", "h" }, -- Add or adjust filetypes if needed
               root_dir = lspconfig.util.root_pattern("*.ino", "*.cpp"), -- You might need to tweak this
               -- root_dir = lspconfig.util.find_git_ancestor,
-            })
+            })]]
           end,
         },
       },
@@ -111,7 +113,8 @@ return {
           "rust",
           "gdscript",
           "rust",
-          "arduino_language_server",
+          "cpp",
+          "arduino",
         },
       },
     },
