@@ -13,6 +13,7 @@ fi
 
 EDITOR="vim"
 
+export OPENAI_API_KEY=`cat ~/.secrets/openai`
 export GEM_HOME="$HOME/gems"
 export PLAYDATE_SDK_PATH="$HOME/Tools/PlaydateSDK-2.5.0"
 export PATH="$HOME/gems/bin:$PLAYDATE_SDK_PATH/bin:$HOME/.cargo/bin:$HOME/.local/bin/:$HOME/Tools/PlaydateSDK-2.5.0/bin:$PATH"
