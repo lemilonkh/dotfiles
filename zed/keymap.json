@@ -30,6 +30,7 @@
       "space e": "project_panel::ToggleFocus",
       "space g r": "editor::RevertSelectedHunks",
       "space g h r": "editor::RevertSelectedHunks",
+      "space z": "workspace::ToggleZoom",
       "g r": "editor::FindAllReferences",
       "g f": "editor::OpenExcerpts",
       "g e": "editor::OpenExcerpts"
